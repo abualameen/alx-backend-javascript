@@ -1,12 +1,10 @@
 export default function iterateThroughObject(reportWithIterator) {
   let result = '';
 
-  for (const employee of reportWithIterator.allEmployees.engineering) {
-    result += `${employee} | `;
+  if (reportWithIterator.allEmployees && reportWithIterator.allEmployees.engineering) {
+    const engineeringEmployees = reportWithIterator.allEmployees.engineering;
+    result = engineeringEmployees.join(' | ');
   }
-
-  // Remove the last ' | ' from the result
-  result = result.slice(0, -3);
 
   return result;
 }
