@@ -1,11 +1,14 @@
 export default function iterateThroughObject(reportWithIterator) {
-  let result = '';
+  const allEmployees = reportWithIterator.allEmployees;
+  const employeeNames = [];
 
-  if (reportWithIterator.allEmployees && reportWithIterator.allEmployees.engineering) {
-    const engineeringEmployees = reportWithIterator.allEmployees.engineering;
-    result = engineeringEmployees.join(' | ');
+  // Iterate through all employees and concatenate their names
+  for (const department in allEmployees) {
+    const employees = allEmployees[department];
+    employeeNames.push(...employees);
   }
 
-  return result;
+  // Join all employee names with '|'
+  return employeeNames.join(' | ');
 }
 
