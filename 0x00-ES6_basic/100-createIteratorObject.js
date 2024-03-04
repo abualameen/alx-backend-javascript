@@ -25,9 +25,6 @@ export default function createIteratorObject(report) {
 
       return { value: employee, done: false };
     },
-    [Symbol.iterator]() {
-      return this;
-    },
   };
 
   return iterator;
