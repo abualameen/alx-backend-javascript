@@ -4,9 +4,10 @@ export default function iterateThroughObject(reportWithIterator) {
     !reportWithIterator ||
     typeof reportWithIterator !== 'object' ||
     !reportWithIterator.allEmployees ||
-    typeof reportWithIterator.allEmployees !== 'object'
+    typeof reportWithIterator.allEmployees !== 'object' ||
+    reportWithIterator.allEmployees === null
   ) {
-    throw new Error('Invalid input: reportWithIterator must be a valid object.');
+    throw new Error('Invalid input: reportWithIterator must be a valid object with allEmployees property.');
   }
 
   const allEmployees = reportWithIterator.allEmployees;
