@@ -1,10 +1,9 @@
 export default function taskBlock(trueOrFalse) {
+  if (trueOrFalse) {
+    //
+  }
   const task = false;
   const task2 = true;
-
-  if (trueOrFalse) {
-    // 
-  }
 
   return [task, task2]; // Return the outer variables
 }
