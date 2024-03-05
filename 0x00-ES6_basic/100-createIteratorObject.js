@@ -8,7 +8,7 @@ export default function createIteratorObject(report) {
     next() {
       if (currentIndex < flattenedEmployees.length) {
         const value = flattenedEmployees[currentIndex];
-        currentIndex++;
+        currentIndex += 1; // Update currentIndex using assignment operator
         return { value, done: false };
       }
       return { done: true };
