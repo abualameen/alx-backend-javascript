@@ -4,18 +4,8 @@ export default class Airport {
     this._code = code;
   }
 
-  // Getter for name attribute
-  get name() {
-    return this._name;
-  }
-
-  // Getter for code attribute
-  get code() {
-    return this._code;
-  }
-
-  // Override default toString() method to return the airport code in square brackets
+  // Override default toString() method to return the desired format
   toString() {
-    return `[${this._code}]`;
+    return `[object ${this._code}]`;
   }
 }
