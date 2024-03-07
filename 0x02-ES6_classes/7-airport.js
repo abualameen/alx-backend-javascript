@@ -14,7 +14,7 @@ export default class Airport {
     return this._code;
   }
 
-  // Override default toString() method to return the airport code
+  // Override default toString() method to return the airport code in square brackets
   toString() {
     return `[${this._code}]`;
   }
