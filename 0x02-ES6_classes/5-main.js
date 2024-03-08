@@ -6,7 +6,7 @@ console.log(b);
 class TestBuilding extends Building {}
 
 try {
-    new TestBuilding(200)
+    TestBuilding.evacuationWarningMessage();
 }
 catch(err) {
     console.log(err);
