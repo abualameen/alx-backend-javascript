@@ -11,6 +11,9 @@ export default function createInt8TypedArray(length, position, value) {
   if (!Number.isInteger(value)) {
     throw new Error('Value must be an integer.');
   }
+  if (value < -128 || value > 127) {
+    throw new Error('Value must be within the range of an Int8 value (-128 to 127).');
+  }
   const buffer = new ArrayBuffer(length);
   const view = new DataView(buffer);
   view.setInt8(position, value);
