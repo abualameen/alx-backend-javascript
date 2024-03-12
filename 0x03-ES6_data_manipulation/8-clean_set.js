@@ -5,7 +5,7 @@ export default function cleanSet(set, startString) {
     newStartString = '';
   }
 
-  if (startString.length === 0) {
+  if (newStartString.length === 0) {
     return '';
   }
 
@@ -16,8 +16,8 @@ export default function cleanSet(set, startString) {
   const output = [];
 
   for (const things of set) {
-    if (typeof things === 'string' && things.startsWith(startString)) {
-      output.push(things.slice(startString.length));
+    if (typeof things === 'string' && things.startsWith(newStartString)) {
+      output.push(things.slice(newStartString.length));
     }
   }
 
