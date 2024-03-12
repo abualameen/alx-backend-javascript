@@ -1,12 +1,21 @@
 export default function cleanSet(set, startString) {
-  const output = [];
+  if (!startString) {
+    startString = '';
+  }
+
   if (startString.length === 0) {
     return '';
   }
 
-  for (const things of set) {
-    if (things.startsWith(startString)) {
-      output.push(things.slice(startString.length));
+  if (!(set instanceof Set)) {
+    throw new Error('Input must be a Set instance');
+  }
+
+  const output = [];
+
+  for (const item of set) {
+    if (typeof item === 'string' && item.startsWith(startString)) {
+      output.push(item.slice(startString.length));
     }
   }
 
