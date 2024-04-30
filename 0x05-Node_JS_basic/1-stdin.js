@@ -12,9 +12,23 @@ process.stdin.on('data', (data) => {
   // Display user's name
   console.log(`Your name is: ${name}`);
 
-  // Display closing message
-  console.log('This important software is now closing');
-
-  // Exit the program
+  // If input is not being redirected, display closing message
+  if (!process.stdin.isTTY) {
+    console.log('This important software is now closing');
+  }
   process.exit(0);
+});
+
+// Set up event listener for end of input
+process.stdin.on('end', () => {
+  // If input is not being redirected, display closing message
+  if (!process.stdin.isTTY) {
+    console.log('This important software is now closing');
+  }
+});
+
+// Set up event listener for error in input
+process.stdin.on('error', (err) => {
+  // Display error message
+  console.error(`Error: ${err}`);
 });
