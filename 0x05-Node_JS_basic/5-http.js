@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs').promises;
 
-const hostname = '127.0.0.1';
+// const hostname = '127.0.0.1';
 const PORT = 1245;
 const DEFAULT_DATABASE_PATH = 'database.csv'; // Define a default database file path
 
@@ -21,12 +21,12 @@ const app = http.createServer(async (req, res) => {
       // Read the database file asynchronously
       const databasePath = DEFAULT_DATABASE_PATH; // Use provided path or default path
       const database = await fs.readFile(databasePath, 'utf-8');
-      
+
       const students = database.split('\n');
-      
+
       for (const line of students) {
         if (line) {
-          const [firstname, , , field] = line.split(',').map(item => item.trim().replace(/"/g, ''));
+          const [firstname, , , field] = line.split(',').map((item) => item.trim().replace(/"/g, ''));
           if (field === 'CS') {
             csStudentsList.push(firstname);
             csStudents += 1;
@@ -36,9 +36,9 @@ const app = http.createServer(async (req, res) => {
           }
         }
       }
-      const response = "This is the list of our students\n" + `Number of students: ${csStudents + sweStudents}\n` +
-      `Number of students in CS: ${csStudents}. List: ${csStudentsList.join(', ')}\n` +
-      `Number of students in SWE: ${sweStudents}. List: ${sweStudentsList.join(', ')}`;
+      const response = `This is the list of our students\nNumber of students: ${csStudents + sweStudents}\n`
+      + `Number of students in CS: ${csStudents}. List: ${csStudentsList.join(', ')}\n`
+      + `Number of students in SWE: ${sweStudents}. List: ${sweStudentsList.join(', ')}`;
 
       res.end(response); // No response body needed for curl command
     } catch (error) {
