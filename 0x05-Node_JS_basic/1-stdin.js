@@ -1,34 +1,19 @@
+
 // Import the 'process' module
 const process = require('process');
+const phrase = "Welcome to Holberton School, what is your name?"
 
-// Display welcome message
-console.log('Welcome to Holberton School, what is your name?\n');
+function wrt() {
+  process.stdout.write(`${phrase}\n`);
+}
 
-// Set up event listener for user input
-process.stdin.on('data', (data) => {
-  // Extract user input
-  const name = data.toString().trim();
-
-  // Display user's name
-  console.log(`Your name is: ${name}`);
-
-  // If input is not being redirected, display closing message
-  if (!process.stdin.isTTY) {
-    console.log('This important software is now closing\n');
-  }
-  process.exit(0);
+process.stdin.on('data', (data)=> {
+  process.stdout.write(`Your name is: ${data}`);
+  process.exit();
 });
-
-// Set up event listener for end of input
-process.stdin.on('end', () => {
-  // If input is not being redirected, display closing message
-  if (!process.stdin.isTTY) {
-    console.log('This important software is now closing\n');
+process.on('exit', ()=>{
+  if (!process.stdin.isTTY){
+    process.stdout.write("This important software is now closing\n");
   }
 });
-
-// Set up event listener for error in input
-process.stdin.on('error', (err) => {
-  // Display error message
-  console.error(`Error: ${err}`);
-});
+wrt()
