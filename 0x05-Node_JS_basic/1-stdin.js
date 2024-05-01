@@ -2,7 +2,7 @@
 const process = require('process');
 
 // Display welcome message
-console.log('Welcome to Holberton School, what is your name?');
+console.log('Welcome to Holberton School, what is your name?\n');
 
 // Set up event listener for user input
 process.stdin.on('data', (data) => {
@@ -14,7 +14,7 @@ process.stdin.on('data', (data) => {
 
   // If input is not being redirected, display closing message
   if (!process.stdin.isTTY) {
-    console.log('This important software is now closing');
+    console.log('This important software is now closing\n');
   }
   process.exit(0);
 });
@@ -23,7 +23,7 @@ process.stdin.on('data', (data) => {
 process.stdin.on('end', () => {
   // If input is not being redirected, display closing message
   if (!process.stdin.isTTY) {
-    console.log('This important software is now closing');
+    console.log('This important software is now closing\n');
   }
 });
 
