@@ -14,7 +14,7 @@ function countStudents(path) {
         const lines = data.split('\n');
         for (const line of lines) {
           if (line) {
-            const [firstname, , , field] = line.split(',');
+            const [firstname, , , field] = line.split(',').map(item => item.trim().replace(/"/g, ''));
             if (field === 'CS') {
               csStudentsList.push(firstname);
               csStudents += 1;

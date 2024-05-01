@@ -22,7 +22,7 @@ app.get('/students', async (req, res) => {
 
     for (const line of students) {
       if (line) {
-        const [firstname, , , field] = line.split(',').map(item => item.trim().replace(/"/g, ''));
+        const [firstname, , , field] = line.split(',').map((item) => item.trim().replace(/"/g, ''));
         if (field === 'CS') {
           csStudentsList.push(firstname);
           csStudents += 1;
