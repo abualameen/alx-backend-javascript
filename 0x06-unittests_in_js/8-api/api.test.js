@@ -1,5 +1,7 @@
 const request = require('request');
-const { expect } = require('chai');
+// const { expect } = require('chai');
+var chai = require('chai');
+var expect = chai.expect;
 const server = require('./api');
 
 describe('Index page', () => {
