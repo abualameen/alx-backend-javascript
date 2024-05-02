@@ -1,15 +1,24 @@
 const request = require('request');
 const { expect } = require('chai');
+const app = require('./api'); // Import the Express app
 
 describe('Index page', () => {
   let server;
 
-  before(() => {
-    server = require('./api');
+  // Start the server before running the tests
+  before((done) => {
+    server = app.listen(7865, () => {
+      console.log('API available on localhost port 7865');
+      done();
+    });
   });
 
-  after(() => {
-    server.close();
+  // Close the server after running the tests
+  after((done) => {
+    server.close(() => {
+      console.log('Server closed');
+      done();
+    });
   });
 
   it('Correct status code?', (done) => {
