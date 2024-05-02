@@ -1,13 +1,9 @@
 const request = require('request');
 const { expect } = require('chai');
+const server = require('./api');
 
 describe('Index page', () => {
-  let server;
-
-  before(() => {
-    server = require('./api');
-  });
-
+  // Make sure to stop the server after all tests
   after(() => {
     server.close();
   });
