@@ -1,11 +1,13 @@
 const request = require('request');
-// const { expect } = require('chai');
-var chai = require('chai');
-var expect = chai.expect;
-const server = require('./api');
+const { expect } = require('chai');
 
 describe('Index page', () => {
-  // Make sure to stop the server after all tests
+  let server;
+
+  before(() => {
+    server = require('./api');
+  });
+
   after(() => {
     server.close();
   });
@@ -25,7 +27,7 @@ describe('Index page', () => {
   });
 
   it('Other?', (done) => {
-    // Add any additional tests here
+    // Additional tests can be added here
     done();
   });
 });
