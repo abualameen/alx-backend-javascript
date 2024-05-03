@@ -93,4 +93,4 @@ describe('Available payments endpoint', () => {
       done();
     });
   });
-});
+}); 

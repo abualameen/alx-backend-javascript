@@ -1,6 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 const port = 7865;
+
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
 
 // Index page route
 app.get('/', (req, res) => {
