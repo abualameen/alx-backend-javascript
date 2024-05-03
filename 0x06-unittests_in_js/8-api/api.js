@@ -1,14 +1,21 @@
 const express = require('express');
 const app = express();
 const port = 7865;
-const localhost = 'localhost';
 
+// Define a route for the root path '/'
 app.get('/', (req, res) => {
-  res.send('Welcome to the payment system');
+  res.send(`
+    <script>
+      console.log("API available on localhost port ${port}");
+    </script>
+    <h1>Welcome to the payment system</h1>
+  `);
 });
 
-const server = app.listen(port, localhost, () => {
-  console.log(`API available on ${localhost} port ${port}`);
+// Start the server
+const server = app.listen(port, () => {
+  console.log(`API available on localhost port ${port}`);
 });
 
+// Export the server instance for testing
 module.exports = server;

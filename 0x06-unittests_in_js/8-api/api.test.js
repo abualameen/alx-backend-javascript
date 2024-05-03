@@ -22,7 +22,6 @@ describe('Index page', () => {
   });
 
   it('Other?', (done) => {
-    // Add any additional tests here
     done();
   });
 });
