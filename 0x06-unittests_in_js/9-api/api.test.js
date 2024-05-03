@@ -1,17 +1,48 @@
-const request = require('supertest');
-const app = require('./api');
+const request = require('request');
 const { expect } = require('chai');
 
-describe('Cart page', () => {
-  it('should return payment methods for cart when id is a number', async () => {
-    const response = await request(app).get('/cart/12');
-    expect(response.status).to.equal(200);
-    expect(response.text).to.equal('Payment methods for cart 12');
+describe('Index page', () => {
+  it('Correct status code for index page?', (done) => {
+    request.get('http://localhost:7865/', (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
   });
 
-  it('should return 404 when id is not a number', async () => {
-    const response = await request(app).get('/cart/hello');
-    expect(response.status).to.equal(404);
-    expect(response.text).to.equal('Invalid cart ID. Must be a number.');
+  it('Correct result for index page?', (done) => {
+    request.get('http://localhost:7865/', (error, response, body) => {
+      expect(body).to.equal('Welcome to the payment system');
+      done();
+    });
+  });
+});
+
+describe('Cart page', () => {
+  it('Correct status code when :id is a number?', (done) => {
+    request.get('http://localhost:7865/cart/12', (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+
+  it('Correct result when :id is a number?', (done) => {
+    request.get('http://localhost:7865/cart/12', (error, response, body) => {
+      expect(body).to.equal('Payment methods for cart 12');
+      done();
+    });
+  });
+
+  it('Correct status code when :id is NOT a number (=> 404)?', (done) => {
+    request.get('http://localhost:7865/cart/hello', (error, response, body) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
+  });
+
+  it('Correct result when :id is NOT a number (=> 404)?', (done) => {
+    request.get('http://localhost:7865/cart/hello', (error, response, body) => {
+      expect(body).to.equal('Invalid cart ID');
+      done();
+    });
   });
 });
